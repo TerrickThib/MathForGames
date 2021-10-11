@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading;
 
 namespace MathForGames
 {
@@ -24,6 +25,7 @@ namespace MathForGames
             {
                 Update();
                 Draw();
+                Thread.Sleep(150);
             }
 
             //Call end for the entire application
@@ -52,6 +54,7 @@ namespace MathForGames
         /// </summary>
         private void Draw()
         {
+            Console.Clear();
             _scenes[_currentSceneIndex].Draw();
         }
 
