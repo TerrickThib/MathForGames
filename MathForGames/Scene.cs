@@ -16,7 +16,11 @@ namespace MathForGames
             _actors = new Actor[0];
         }
 
-        public void Start()
+
+        /// <summary>
+        /// Calls start for all actors in the actors array
+        /// </summary>
+        public virtual void Start()
         {
             for (int i = 0; i < _actors.Length; i++)
             {
@@ -25,25 +29,47 @@ namespace MathForGames
                 
         }
 
-        public void Update()
+        /// <summary>
+        /// Calls update for every actor in the scene.
+        /// Calls start for the actor if it hasn't already been called.
+        /// </summary>
+        public virtual void Update()
         {
+            for(int i = 0; i < _actors.Length; i++)
+            {
+                if (!_actors[i].Started)
+                _actors[i].Start();
 
+                _actors[i].Update();
+            }
         }
         
-        public void Draw()
+        /// <summary>
+        /// Calls draw for every actor in the array
+        /// </summary>
+        public virtual void Draw()
         {
-
+            for (int i = 0; i < _actors.Length; i++)
+            {
+                _actors[i].Draw();
+            }
         }
 
-        public void End()
+        /// <summary>
+        /// 
+        /// </summary>
+        public virtual void End()
         {
-
+            for (int i = 0; i < _actors.Length; i++)
+            {
+                _actors[i].End();
+            }
         }
         /// <summary>
         /// Adds an actor 
         /// </summary>
         /// <param name="actor"></param>
-        public void AddActor(Actor actor)
+        public virtual void AddActor(Actor actor)
         {
             //Creats a temp array that is larger than the orignal array
             Actor[] tempArray = new Actor[_actors.Length + 1];
@@ -66,7 +92,7 @@ namespace MathForGames
         /// </summary>
         /// <param name="actor">The actor to remove</param>
         /// <returns>False if the actor was not in the scene array</returns>
-        public bool RemoveActor(Actor actor)
+        public virtual bool RemoveActor(Actor actor)
         {
             //Create a variable to store if the removal was successful
             bool actorRemoved = false;
