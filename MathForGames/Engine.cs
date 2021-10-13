@@ -25,8 +25,9 @@ namespace MathForGames
             while (!_applicationShouldClose)
             {
                 Update();
-                Draw();
-                Thread.Sleep(150);
+                Draw();               
+
+                Thread.Sleep(50);
             }
 
             //Call end for the entire application
@@ -61,6 +62,12 @@ namespace MathForGames
         private void Update()
         {
             _scenes[_currentSceneIndex].Update();
+            
+            //While there is a key in the input bufer read it
+            while (Console.KeyAvailable)
+            {
+                Console.ReadKey(true);
+            }
         }
 
         /// <summary>
@@ -168,6 +175,14 @@ namespace MathForGames
             {
                 return true;
             }
+        }
+
+        /// <summary>
+        /// Ends the application
+        /// </summary>
+        public static void CloseApplication()
+        {
+            _applicationShouldClose = true;
         }
     }
 }

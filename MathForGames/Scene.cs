@@ -35,12 +35,21 @@ namespace MathForGames
         /// </summary>
         public virtual void Update()
         {
+            //Iterates through the actors
             for(int i = 0; i < _actors.Length; i++)
             {
                 if (!_actors[i].Started)
                 _actors[i].Start();
 
                 _actors[i].Update();
+
+                //Check for collision _actors[j] is the array going through actors
+                for (int j = 0; j < _actors.Length; j++)
+                {
+                    if (_actors[i].Position == _actors[j].Position && j != i)
+                        _actors[i].OnCollision(_actors[j]);
+                    
+                }
             }
         }
         
