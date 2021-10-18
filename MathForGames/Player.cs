@@ -42,15 +42,17 @@ namespace MathForGames
             //Creat a vector that stores the move input            
             Vector2 moveDirection = new Vector2(xDirection, yDirection);
                                              
-            Velocity = moveDirection * Speed * deltaTime;
+            Velocity = moveDirection.Normalized * Speed * deltaTime;
 
             //Uses velocity with current Position
-            Position += Velocity;            
+            Position += Velocity;
+
+            base.Update(deltaTime);
         }
 
         public override void OnCollision(Actor actor)
         {
-            Engine.CloseApplication();
+            
         }
     }
 }
