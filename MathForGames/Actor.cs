@@ -29,12 +29,7 @@ namespace MathForGames
         {
             get { return _position; }
             set { _position = value; }
-        }
-
-        public Icon Icon
-        {
-            get { return _icon; }
-        }
+        }       
 
         public Actor(char icon, float x, float y, string name = "Actor", ConsoleColor color = ConsoleColor.White)
             : this(icon, new Vector2 { X = x, Y = y}, name, color) {}
